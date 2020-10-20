@@ -1,0 +1,1179 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>UoPeople - help</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+
+    <style>
+        /* General */
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-300.woff);
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-400.woff);
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-500.woff);
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-600.woff);
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-700.woff);
+    font-weight: 700;
+}
+
+body {
+    font-family: "Whitney", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 17px;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+img {
+    object-fit: contain;
+}
+
+.markdown {
+    max-width: 100%;
+    white-space: pre-wrap;
+    line-height: 1.3;
+    overflow-wrap: break-word;
+}
+
+.spoiler {
+    width: fit-content;
+}
+
+.spoiler--hidden {
+    cursor: pointer;
+}
+
+.spoiler-text {
+    border-radius: 3px;
+}
+
+.spoiler--hidden .spoiler-text {
+    color: rgba(0, 0, 0, 0);
+}
+
+.spoiler--hidden .spoiler-text::selection {
+    color: rgba(0, 0, 0, 0);
+}
+
+.spoiler-image {
+    position: relative;
+    overflow: hidden;
+    border-radius: 3px;
+}
+
+.spoiler--hidden .spoiler-image {
+    box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+.spoiler--hidden .spoiler-image img {
+    filter: blur(44px);
+}
+
+.spoiler--hidden .spoiler-image:after {
+    content: "SPOILER";
+    color: #dcddde;
+    background-color: rgba(0, 0, 0, 0.6);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: 600;
+    padding: 0.5em 0.7em;
+    border-radius: 20px;
+    letter-spacing: 0.05em;
+    font-size: 0.9em;
+}
+
+.spoiler--hidden:hover .spoiler-image:after {
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.quote {
+    margin: 0.1em 0;
+    padding-left: 0.6em;
+    border-left: 4px solid;
+    border-radius: 3px;
+}
+
+.pre {
+    font-family: "Consolas", "Courier New", Courier, monospace;
+}
+
+.pre--multiline {
+    margin-top: 0.25em;
+    padding: 0.5em;
+    border: 2px solid;
+    border-radius: 5px;
+}
+
+.pre--inline {
+    padding: 2px;
+    border-radius: 3px;
+    font-size: 0.85em;
+}
+
+.mention {
+    border-radius: 3px;
+    padding: 0 2px;
+    color: #7289da;
+    background: rgba(114, 137, 218, .1);
+    font-weight: 500;
+}
+
+.emoji {
+    width: 1.25em;
+    height: 1.25em;
+    margin: 0 0.06em;
+    vertical-align: -0.4em;
+}
+
+.emoji--small {
+    width: 1em;
+    height: 1em;
+}
+
+.emoji--large {
+    width: 2.8em;
+    height: 2.8em;
+}
+
+/* Preamble */
+
+.preamble {
+    display: grid;
+    margin: 0 0.3em 0.6em 0.3em;
+    max-width: 100%;
+    grid-template-columns: auto 1fr;
+}
+
+.preamble__guild-icon-container {
+    grid-column: 1;
+}
+
+.preamble__guild-icon {
+    max-width: 88px;
+    max-height: 88px;
+}
+
+.preamble__entries-container {
+    grid-column: 2;
+    margin-left: 0.6em;
+}
+
+.preamble__entry {
+    font-size: 1.4em;
+}
+
+.preamble__entry--small {
+    font-size: 1em;
+}
+
+/* Chatlog */
+
+.chatlog {
+    max-width: 100%;
+}
+
+.chatlog__message-group {
+    display: grid;
+    margin: 0 0.6em;
+    padding: 0.9em 0;
+    border-top: 1px solid;
+    grid-template-columns: auto 1fr;
+}
+
+.chatlog__author-avatar-container {
+    grid-column: 1;
+    width: 40px;
+    height: 40px;
+}
+
+.chatlog__author-avatar {
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+}
+
+.chatlog__messages {
+    grid-column: 2;
+    margin-left: 1.2em;
+    min-width: 50%;
+}
+
+.chatlog__author-name {
+    font-weight: 500;
+}
+
+.chatlog__timestamp {
+    margin-left: 0.3em;
+    font-size: 0.75em;
+}
+
+.chatlog__message {
+    padding: 0.1em 0.3em;
+    margin: 0 -0.3em;
+    background-color: transparent;
+    transition: background-color 1s ease;
+}
+
+.chatlog__content {
+    font-size: 0.95em;
+    word-wrap: break-word;
+}
+
+.chatlog__edited-timestamp {
+    margin-left: 0.15em;
+    font-size: 0.8em;
+}
+
+.chatlog__attachment {
+    margin-top: 0.3em;
+}
+
+.chatlog__attachment-thumbnail {
+    vertical-align: top;
+    max-width: 45vw;
+    max-height: 500px;
+    border-radius: 3px;
+}
+
+.chatlog__embed {
+    display: flex;
+    margin-top: 0.3em;
+    max-width: 520px;
+}
+
+.chatlog__embed-color-pill {
+    flex-shrink: 0;
+    width: 0.25em;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+
+.chatlog__embed-content-container {
+    display: flex;
+    flex-direction: column;
+    padding: 0.5em 0.6em;
+    border: 1px solid;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+.chatlog__embed-content {
+    display: flex;
+    width: 100%;
+}
+
+.chatlog__embed-text {
+    flex: 1;
+}
+
+.chatlog__embed-author {
+    display: flex;
+    margin-bottom: 0.3em;
+    align-items: center;
+}
+
+.chatlog__embed-author-icon {
+    margin-right: 0.5em;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+
+.chatlog__embed-author-name {
+    font-size: 0.875em;
+    font-weight: 600;
+}
+
+.chatlog__embed-title {
+    margin-bottom: 0.2em;
+    font-size: 0.875em;
+    font-weight: 600;
+}
+
+.chatlog__embed-description {
+    font-weight: 500;
+    font-size: 0.85em;
+}
+
+.chatlog__embed-fields {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.chatlog__embed-field {
+    flex: 0;
+    min-width: 100%;
+    max-width: 506px;
+    padding-top: 0.6em;
+    font-size: 0.875em;
+}
+
+.chatlog__embed-field--inline {
+    flex: 1;
+    flex-basis: auto;
+    min-width: 150px;
+}
+
+.chatlog__embed-field-name {
+    margin-bottom: 0.2em;
+    font-weight: 600;
+}
+
+.chatlog__embed-field-value {
+    font-weight: 500;
+}
+
+.chatlog__embed-thumbnail {
+    flex: 0;
+    margin-left: 1.2em;
+    max-width: 80px;
+    max-height: 80px;
+    border-radius: 3px;
+}
+
+.chatlog__embed-image-container {
+    margin-top: 0.6em;
+}
+
+.chatlog__embed-image {
+    max-width: 500px;
+    max-height: 400px;
+    border-radius: 3px;
+}
+
+.chatlog__embed-footer {
+    margin-top: 0.6em;
+}
+
+.chatlog__embed-footer-icon {
+    margin-right: 0.2em;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    vertical-align: middle;
+}
+
+.chatlog__embed-footer-text {
+    font-size: 0.75em;
+    font-weight: 500;
+}
+
+.chatlog__reactions {
+    display: flex;
+}
+
+.chatlog__reaction {
+    display: flex;
+    align-items: center;
+    margin: 0.35em 0.1em 0.1em 0.1em;
+    padding: 0.2em 0.35em;
+    border-radius: 3px;
+}
+
+.chatlog__reaction-count {
+    min-width: 9px;
+    margin-left: 0.35em;
+    font-size: 0.875em;
+}
+
+.chatlog__bot-tag {
+    position: relative;
+    top: -.2em;
+    margin-left: 0.3em;
+    padding: 0.05em 0.3em;
+    border-radius: 3px;
+    vertical-align: middle;
+    line-height: 1.3;
+    background: #7289da;
+    color: #ffffff;
+    font-size: 0.625em;
+    font-weight: 500;
+}
+
+/* Postamble */
+
+.postamble {
+    margin: 1.4em 0.3em 0.6em 0.3em;
+    padding: 1em;
+    border-top: 1px solid;
+}
+    </style>
+    <style>
+        /* General */
+
+body {
+    background-color: #36393e;
+    color: #dcddde;
+}
+
+a {
+    color: #0096cf;
+}
+
+.spoiler-text {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.spoiler--hidden .spoiler-text {
+    background-color: #202225;
+}
+
+.spoiler--hidden:hover .spoiler-text {
+    background-color: rgba(32, 34, 37, 0.8);
+}
+
+.quote {
+    border-color: #4f545c;
+}
+
+.pre {
+    background-color: #2f3136 !important;
+}
+
+.pre--multiline {
+    border-color: #282b30 !important;
+    color: #b9bbbe !important;
+}
+
+/* === Preamble === */
+
+.preamble__entry {
+    color: #ffffff;
+}
+
+/* Chatlog */
+
+.chatlog__message-group {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.chatlog__author-name {
+    color: #ffffff;
+}
+
+.chatlog__timestamp {
+    color: rgba(255, 255, 255, 0.2);
+}
+
+.chatlog__message--highlighted {
+    background-color: rgba(114, 137, 218, 0.2) !important;
+}
+
+.chatlog__message--pinned {
+    background-color: rgba(249, 168, 37, 0.05);
+}
+
+.chatlog__edited-timestamp {
+    color: rgba(255, 255, 255, 0.2);
+}
+
+.chatlog__embed-color-pill--default {
+    background-color: rgba(79, 84, 92, 1);
+}
+
+.chatlog__embed-content-container {
+    background-color: rgba(46, 48, 54, 0.3);
+    border-color: rgba(46, 48, 54, 0.6);
+}
+
+.chatlog__embed-author-name {
+    color: #ffffff;
+}
+
+.chatlog__embed-author-name-link {
+    color: #ffffff;
+}
+
+.chatlog__embed-title {
+    color: #ffffff;
+}
+
+.chatlog__embed-description {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.chatlog__embed-field-name {
+    color: #ffffff;
+}
+
+.chatlog__embed-field-value {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.chatlog__embed-footer {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.chatlog__reaction {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.chatlog__reaction-count {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+/* Postamble */
+
+.postamble {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.postamble__entry {
+    color: #ffffff;
+}
+    </style>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/solarized-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.pre--multiline').forEach(block => hljs.highlightBlock(block));
+        });
+    </script>
+
+    <script>
+        function scrollToMessage(event, id) {
+            var element = document.getElementById('message-' + id);
+
+            if (element) {
+                event.preventDefault();
+
+                element.classList.add('chatlog__message--highlighted');
+
+                window.scrollTo({
+                    top: element.getBoundingClientRect().top - document.body.getBoundingClientRect().top - (window.innerHeight / 2),
+                    behavior: 'smooth'
+                });
+
+                window.setTimeout(function() {
+                    element.classList.remove('chatlog__message--highlighted');
+                }, 2000);
+            }
+        }
+
+        function showSpoiler(event, element) {
+            if (element && element.classList.contains('spoiler--hidden')) {
+                event.preventDefault();
+                element.classList.remove('spoiler--hidden');
+            }
+        }
+    </script>
+</head>
+<body>
+
+<div class="preamble">
+    <div class="preamble__guild-icon-container">
+        <img class="preamble__guild-icon" src="https://cdn.discordapp.com/icons/516081474617868293/f08c202d79af3269073027ffbef80e25.png" alt="Guild icon">
+    </div>
+    <div class="preamble__entries-container">
+        <div class="preamble__entry">UoPeople</div>
+        <div class="preamble__entry">UoPeople / help</div>
+
+            <div class="preamble__entry preamble__entry--small">~~Just tell me the answer!~~</div>
+
+    </div>
+</div>
+
+<div class="chatlog">
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/1.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Seer#8006" data-user-id="723438987053760592" style="">Seer</span>
+
+
+        <span class="chatlog__timestamp">20-Jun-20 04:30 PM</span>
+
+            <div class="chatlog__message " data-message-id="723816978749325312" id="message-723816978749325312">
+                <div class="chatlog__content">
+                    <div class="markdown">How do i set roles? </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/292590497661321216/ab00a89d48788cb563ba46d5f84ecf91.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="ShinyBluePen#8937" data-user-id="292590497661321216" style="color: rgb(230,126,34)">ShinyBluePen GMT+7</span>
+
+
+        <span class="chatlog__timestamp">23-Jun-20 10:40 PM</span>
+
+            <div class="chatlog__message " data-message-id="724997285934792705" id="message-724997285934792705">
+                <div class="chatlog__content">
+                    <div class="markdown">@Seer#8006 you click the emoji that applies in <span class="mention">#roles</span> </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/267759158055403520/a_b229433d28db3cade3f3d0cc2c77c0ab.gif" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="aego#0420" data-user-id="267759158055403520" style="">aego</span>
+
+
+        <span class="chatlog__timestamp">24-Jun-20 02:46 AM</span>
+
+            <div class="chatlog__message " data-message-id="725059191546445997" id="message-725059191546445997">
+                <div class="chatlog__content">
+                    <div class="markdown">The girls/boys roles exclude non-binary individuals. </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/725815874094628945/f91f0b7fd6aa61cf9606a5ed750fd342.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Festus Cobena Ainoo#8143" data-user-id="725815874094628945" style="color: rgb(148,240,179)">Festus Cobena Ainoo</span>
+
+
+        <span class="chatlog__timestamp">26-Jun-20 05:18 AM</span>
+
+            <div class="chatlog__message " data-message-id="725822239877890088" id="message-725822239877890088">
+                <div class="chatlog__content">
+                    <div class="markdown">How do I set roles </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/513870058590568450/c3ec58caba5627cdb0647fba1a3dd534.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="AlexNklw#2914" data-user-id="513870058590568450" style="color: rgb(118,158,247)">AlexNklw</span>
+
+
+        <span class="chatlog__timestamp">26-Jun-20 05:52 AM</span>
+
+            <div class="chatlog__message " data-message-id="725830762955407361" id="message-725830762955407361">
+                <div class="chatlog__content">
+                    <div class="markdown"><span class="mention" title="Festus Cobena Ainoo#8143">@Festus Cobena Ainoo</span> go to the <span class="mention">#roles</span> tab, and click the emoji </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/292590497661321216/ab00a89d48788cb563ba46d5f84ecf91.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="ShinyBluePen#8937" data-user-id="292590497661321216" style="color: rgb(230,126,34)">ShinyBluePen GMT+7</span>
+
+
+        <span class="chatlog__timestamp">27-Jun-20 05:56 PM</span>
+
+            <div class="chatlog__message " data-message-id="726375513366462465" id="message-726375513366462465">
+                <div class="chatlog__content">
+                    <div class="markdown">@aego#4807 either you got a dick or you don&#39;t. </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/283283302050299905/565daca771d83938382112248ac17d9f.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Ellie#5292" data-user-id="283283302050299905" style="">Ellie</span>
+
+
+        <span class="chatlog__timestamp">23-Aug-20 08:27 PM</span>
+
+            <div class="chatlog__message " data-message-id="747069554789711892" id="message-747069554789711892">
+                <div class="chatlog__content">
+                    <div class="markdown">Hey! 
+Is it possible to change the degree I&#39;ve chosen after the first term? <span class="chatlog__edited-timestamp" title="23-Aug-20 09:07 PM">(edited)</span></div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/245371307892539393/0043cfd1e4be2d737b7c3dcc15ca8acb.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="alwaystired#8042" data-user-id="245371307892539393" style="color: rgb(118,158,247)">alwaystired</span>
+
+
+        <span class="chatlog__timestamp">23-Aug-20 08:54 PM</span>
+
+            <div class="chatlog__message " data-message-id="747076290825158707" id="message-747076290825158707">
+                <div class="chatlog__content">
+                    <div class="markdown">i think so. it will be an option buried somewhere at your.uopeople.edu </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/283283302050299905/565daca771d83938382112248ac17d9f.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Ellie#5292" data-user-id="283283302050299905" style="">Ellie</span>
+
+
+        <span class="chatlog__timestamp">23-Aug-20 09:07 PM</span>
+
+            <div class="chatlog__message " data-message-id="747079449295454249" id="message-747079449295454249">
+                <div class="chatlog__content">
+                    <div class="markdown"><span class="mention" title="alwaystired#8042">@alwaystired</span> 
+I&#39;ve chosen C.S but I&#39;m unsure if I should stick with it or change to Buisiness Admin. 
+Thanks! <span class="chatlog__edited-timestamp" title="23-Aug-20 09:08 PM">(edited)</span></div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/245371307892539393/0043cfd1e4be2d737b7c3dcc15ca8acb.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="alwaystired#8042" data-user-id="245371307892539393" style="color: rgb(118,158,247)">alwaystired</span>
+
+
+        <span class="chatlog__timestamp">23-Aug-20 09:09 PM</span>
+
+            <div class="chatlog__message " data-message-id="747080170715873280" id="message-747080170715873280">
+                <div class="chatlog__content">
+                    <div class="markdown">hmm... for me, starting college at all before feeling fully committed ended up being a terrible mistake. however, it depends on whether a hundred bucks per course is alot for you.
+
+if this is a substantial investment it might be best to take some time, maybe get a job, and figure out what&#39;s best for you </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/283283302050299905/565daca771d83938382112248ac17d9f.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Ellie#5292" data-user-id="283283302050299905" style="">Ellie</span>
+
+
+        <span class="chatlog__timestamp">23-Aug-20 09:12 PM</span>
+
+            <div class="chatlog__message " data-message-id="747080708035575908" id="message-747080708035575908">
+                <div class="chatlog__content">
+                    <div class="markdown"><div class="quote">hmm... for me, starting college at all before feeling fully committed ended up being a terrible mistake. however, it depends on whether a hundred bucks per course is alot for you.
+</div>&gt; 
+<div class="quote">if this is a substantial investment it might be best to take some time, maybe get a job, and figure out what&#39;s best for you
+</div><span class="mention" title="alwaystired#8042">@alwaystired</span> 
+I am commited and I am interested in both things. I like buisness, economy and c.s. I already have some formal programming training I&#39;m just doubtful about which &quot;degree&quot; to choose from all the things I like. <span class="chatlog__edited-timestamp" title="23-Aug-20 09:12 PM">(edited)</span></div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/245371307892539393/0043cfd1e4be2d737b7c3dcc15ca8acb.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="alwaystired#8042" data-user-id="245371307892539393" style="color: rgb(118,158,247)">alwaystired</span>
+
+
+        <span class="chatlog__timestamp">23-Aug-20 09:12 PM</span>
+
+            <div class="chatlog__message " data-message-id="747080888453431446" id="message-747080888453431446">
+                <div class="chatlog__content">
+                    <div class="markdown">from what i&#39;ve read CS is probably the path of least resistance finding work. remember that the degree isn&#39;t regionally accredited yet </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/283283302050299905/565daca771d83938382112248ac17d9f.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Ellie#5292" data-user-id="283283302050299905" style="">Ellie</span>
+
+
+        <span class="chatlog__timestamp">23-Aug-20 09:17 PM</span>
+
+            <div class="chatlog__message " data-message-id="747082071062741042" id="message-747082071062741042">
+                <div class="chatlog__content">
+                    <div class="markdown">I am not that focused in getting a degree to find a job though, I am thinking about it as a long term investment ( the degree ) and let&#39;s say complementary good formal training ( the knowledge ). </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/159985870458322944/b50adff099924dd5e6b72d13f77eb9d7.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="MEE6#4876" data-user-id="159985870458322944" style="color: rgb(26,188,156)">MEE6</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">23-Aug-20 09:17 PM</span>
+
+            <div class="chatlog__message " data-message-id="747082071553605672" id="message-747082071553605672">
+                <div class="chatlog__content">
+                    <div class="markdown">\o/ <span class="mention" title="Ellie#5292">@Ellie</span> has ascended to level 1!  \o/ </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/283283302050299905/565daca771d83938382112248ac17d9f.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Ellie#5292" data-user-id="283283302050299905" style="">Ellie</span>
+
+
+        <span class="chatlog__timestamp">23-Aug-20 09:17 PM</span>
+
+            <div class="chatlog__message " data-message-id="747082122728308758" id="message-747082122728308758">
+                <div class="chatlog__content">
+                    <div class="markdown">Oh that scared me.. jesus. </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/467945111951769600/66e8b38b41665ee75916b1280ebcf38c.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="abhigyandsa#4296" data-user-id="467945111951769600" style="color: rgb(118,158,247)">abhigyandsa</span>
+
+
+        <span class="chatlog__timestamp">06-Sep-20 01:04 AM</span>
+
+            <div class="chatlog__message " data-message-id="751850324175880292" id="message-751850324175880292">
+                <div class="chatlog__content">
+                    <div class="markdown">xDD </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="751850491323088974" id="message-751850491323088974">
+                <div class="chatlog__content">
+                    <div class="markdown">I would say look at the syllabus and see if you are interested in content that comes up later in both courses. </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="751850721942569080" id="message-751850721942569080">
+                <div class="chatlog__content">
+                    <div class="markdown">B.Tech curriculum is significant different than coding bootcamps. </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="751850866046271730" id="message-751850866046271730">
+                <div class="chatlog__content">
+                    <div class="markdown">and I am sure BA will be that way too. <span class="chatlog__edited-timestamp" title="06-Sep-20 01:07 AM">(edited)</span></div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="751851045721866342" id="message-751851045721866342">
+                <div class="chatlog__content">
+                    <div class="markdown">I mean sure you&#39;ll have economics but afaik you&#39;ll also have financial stuff and also a little bit of law </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/159985870458322944/b50adff099924dd5e6b72d13f77eb9d7.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="MEE6#4876" data-user-id="159985870458322944" style="color: rgb(26,188,156)">MEE6</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">06-Sep-20 01:07 AM</span>
+
+            <div class="chatlog__message " data-message-id="751851046917374152" id="message-751851046917374152">
+                <div class="chatlog__content">
+                    <div class="markdown">\o/ <span class="mention" title="abhigyandsa#4296">@abhigyandsa</span> has ascended to level 1!  \o/ </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/467945111951769600/66e8b38b41665ee75916b1280ebcf38c.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="abhigyandsa#4296" data-user-id="467945111951769600" style="color: rgb(118,158,247)">abhigyandsa</span>
+
+
+        <span class="chatlog__timestamp">06-Sep-20 01:08 AM</span>
+
+            <div class="chatlog__message " data-message-id="751851252044005498" id="message-751851252044005498">
+                <div class="chatlog__content">
+                    <div class="markdown">So check which you are most passionate in and also which you&#39;ll have least problems in finishing. </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="751851712465338430" id="message-751851712465338430">
+                <div class="chatlog__content">
+                    <div class="markdown">wait am I talking to someone who left the server? </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="751851721285828758" id="message-751851721285828758">
+                <div class="chatlog__content">
+                    <div class="markdown">lol </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/245371307892539393/0043cfd1e4be2d737b7c3dcc15ca8acb.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="alwaystired#8042" data-user-id="245371307892539393" style="color: rgb(118,158,247)">alwaystired</span>
+
+
+        <span class="chatlog__timestamp">06-Sep-20 01:27 AM</span>
+
+            <div class="chatlog__message " data-message-id="751856085589295165" id="message-751856085589295165">
+                <div class="chatlog__content">
+                    <div class="markdown">apparently so </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/291467910415646730/bffdc9b7835759b8895a9f9e8b3b27e2.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="kslash#6501" data-user-id="291467910415646730" style="color: rgb(118,158,247)">kslash</span>
+
+
+        <span class="chatlog__timestamp">17-Sep-20 11:39 AM</span>
+
+            <div class="chatlog__message " data-message-id="755996201542746132" id="message-755996201542746132">
+                <div class="chatlog__content">
+                    <div class="markdown">Hey guys, I submitted my unit 2 programming assignment, but I am still not getting the tick.
+Does the tick appear after today or do I have to contact my instructor? </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/292590497661321216/ab00a89d48788cb563ba46d5f84ecf91.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="ShinyBluePen#8937" data-user-id="292590497661321216" style="color: rgb(230,126,34)">ShinyBluePen GMT+7</span>
+
+
+        <span class="chatlog__timestamp">17-Sep-20 11:46 AM</span>
+
+            <div class="chatlog__message " data-message-id="755998208919863407" id="message-755998208919863407">
+                <div class="chatlog__content">
+                    <div class="markdown">You need to have graded your peers, as well </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="755998334379884645" id="message-755998334379884645">
+                <div class="chatlog__content">
+                    <div class="markdown"><span class="mention" title="kslash#6501">@kslash</span> </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/245371307892539393/0043cfd1e4be2d737b7c3dcc15ca8acb.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="alwaystired#8042" data-user-id="245371307892539393" style="color: rgb(118,158,247)">alwaystired</span>
+
+
+        <span class="chatlog__timestamp">17-Sep-20 01:08 PM</span>
+
+            <div class="chatlog__message " data-message-id="756018730319740958" id="message-756018730319740958">
+                <div class="chatlog__content">
+                    <div class="markdown">yep. week 1s will tick for us tomorrow </div>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="756018763622645802" id="message-756018763622645802">
+                <div class="chatlog__content">
+                    <div class="markdown">all working as expected </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+</div>
+
+<div class="postamble">
+    <div class="postamble__entry">Exported 30 message(s)</div>
+</div>
+
+</body>
+</html>
